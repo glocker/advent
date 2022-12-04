@@ -31,4 +31,23 @@ function part1() {
     console.log(sectionsList.reduce((a, b) => a + b, 0));
 }
 
+function part2() {
+    const res = input.map((section) => {
+        const [startID, endID] = section
+            .split(",")
+            .map((pair) => pair.split("-").map(Number))
+            .sort((a, b) => {
+                const sameLength = a[1] - a[0];
+                const differentLength = b[1] - b[0];
+                return differentLength - sameLength;
+            });
+
+        const isOverlap = startID[1] >= endID[0] && endID[1] >= startID[0];
+
+        return isOverlap ? 1 : 0;
+    });
+    console.log(res.reduce((a, b) => a + b, 0));
+}
+
 part1();
+part2();
