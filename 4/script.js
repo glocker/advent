@@ -5,4 +5,24 @@ const input = readFileSync("input.txt", { encoding: "utf-8" })
     .trim()
     .split("\n");
 
-console.log(input);
+function part1() {
+
+    const sectionsList = input.map(line => line.split(","));
+
+    const startID = sectionsList.map(
+        section => section.map(
+            pairs => pairs.split("-")[0]
+        )
+    )
+
+    const endID = sectionsList.map(
+        section => section.map(
+            pairs => pairs.split("-")[1]
+        )
+    )
+
+
+    console.log(startID + "\n" + endID);
+}
+
+part1();
