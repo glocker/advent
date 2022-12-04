@@ -7,22 +7,18 @@ const input = readFileSync("input.txt", { encoding: "utf-8" })
 
 function part1() {
 
-    const sectionsList = input.map(line => line.split(","));
+    const sectionsList = input.map(line => {
 
-    const startID = sectionsList.map(
-        section => section.map(
-            pairs => pairs.split("-")[0]
-        )
-    )
+        // Getting the start value and end value of each pair of numbers
+        const [startID, endID] = line.split(",")
+                                     .map((pairs) =>
+                                         pairs.split("-")
+                                              .map(Number));
 
-    const endID = sectionsList.map(
-        section => section.map(
-            pairs => pairs.split("-")[1]
-        )
-    )
+        console.log({startID, endID});
+    });
 
-
-    console.log(startID + "\n" + endID);
+    console.log(sectionsList);
 }
 
 part1();
